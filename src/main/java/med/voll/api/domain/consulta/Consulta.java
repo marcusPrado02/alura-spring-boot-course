@@ -41,16 +41,17 @@ public class Consulta {
     private LocalDateTime data;
     @Enumerated(EnumType.STRING)
     private ConsultaStatus status;
+    private boolean ativo;
     @Column(name = "motivo_cancelamento")
     @Enumerated(EnumType.STRING)
-    private @NotNull MotivoCancelamento motivo;
+    private @NotNull MotivoCancelamento motivoCancelamento;
 
     public Consulta(Object o, Medico medico, Paciente paciente, LocalDateTime data, ConsultaStatus consultaStatus) {
     }
 
     public void cancelar(@NotNull MotivoCancelamento motivo) {
         status = ConsultaStatus.CANCELADA;
-        this.motivo = motivo;
+        this.motivoCancelamento = motivo;
     }
 
     public void finalizar() {
